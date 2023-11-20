@@ -1,0 +1,11 @@
+require 'benchmark'
+    symbol = { :foo => "value" } 
+    string = { "foo" => "value" }
+    integer = { 1000 => "value" } 
+
+    n=1000000000
+    Benchmark.bmbm do |x|
+      x.report("Symbol") { n.times{symbol[:foo]} }
+      x.report("String") { n.times{string["foo"]} }
+      x.report("Integer") { n.times{integer[1000]} }
+    end
